@@ -1,0 +1,47 @@
+<div class="lg_sigup">
+  <div style="text-align: center; padding:40px">
+    <img _ngcontent-jcw-c0="" class="logo" height="28" src="../assets/images/video-camera.png"
+      style="width: 250px;height: 150px;">
+  </div>
+
+
+<div class="layer">
+  <div style="text-align: center;">
+    <h1 style="color: white;font-family: Roboto; font-size: 3.5rem !important;">MOVIESDB</h1>
+  </div>
+  <form method="post" autocomplete="off">
+
+    <div style="text-align: center; padding: 2px;">
+
+
+      <input placeholder="User Email or Phone Number" type="text" name="username" [(ngModel)]="reqData.userName"
+        #username="ngModel" pattern="(^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$|^\d{10}$)" autocomplete="off"
+        [class.err-border]="username.invalid" style="background-color: #0077B5;
+        border: none;
+        border-bottom: 1px solid #f8f9fa; width:250px; color:white;" />
+      <span><i style="font-size:16px;margin-left: -13px;" class="fa fa-user"></i></span>
+      <div *ngIf="username.invalid" class="error">Please enter valid email or phone number</div>
+    </div>
+
+
+
+
+    <div style="text-align: center; padding: 17px;">
+      <input placeholder="Password" type="password" name="password" [(ngModel)]="reqData.password" #password="ngModel"
+        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" autocomplete="off" style="background-color: #0077B5;
+        border: none;
+        border-bottom: 1px solid #f8f9fa; width:250px;color:white;" />
+      <span><i style="font-size:16px;margin-left: -13px;" class="fa fa-key"></i></span>
+      <div *ngIf="password.invalid" class="error">Pasword must contain atleast one number, uppercase , smallercase and
+        one special character</div>
+    </div>
+
+  </form>
+
+  <div style="text-align: center;padding: 10px;">
+    <img class="lgIcon" [routerLink]="['/home']" (click)="login()" style="cursor: pointer;"
+      src="../assets/images/security.png" width="42" />
+  </div>
+</div>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="header">
+    <button (click)= "logout()">Logout</button>
+</div>
+
+<div class= "flex">
+    <div *ngFor="let dt of data" class ="card">
+      <div class="title">{{dt.Title}}</div>
+      <div class="avtar" ><img [src]= "dt.Poster"></div>
+      <div class="dummy"></div>
+      <div class="info">
+        <div>Year: {{ dt.Year}} </div>
+        <div>ImdbID: {{ dt.imdbID}} </div>
+        <div>Type: {{ dt.Type}} </div>
+
+      </div>
+    </div>
+  </div>
