@@ -1,17 +1,56 @@
 <div class="header">
-    <button (click)= "logout()">Logout</button>
+  <img src="../assets/images/play.png" width="20" height="20" style="float: left;">
+  <a [routerLink]="['/home']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" style="float: left;">Home</a>
+
+  <a (click)="logout()" class="logout">Logout<i class="fa fa-sign-out" style="padding-left: 5px;"
+      aria-hidden="true"></i></a>
+
 </div>
 
-<div class= "flex">
-    <div *ngFor="let dt of data" class ="card">
-      <div class="title">{{dt.Title}}</div>
-      <div class="avtar" ><img [src]= "dt.Poster"></div>
-      <div class="dummy"></div>
-      <div class="info">
-        <div>Year: {{ dt.Year}} </div>
-        <div>ImdbID: {{ dt.imdbID}} </div>
-        <div>Type: {{ dt.Type}} </div>
+<div class="line">
 
-      </div>
+  <span><input type="text" name="query" [(ngModel)]="query"  class="search"
+      placeholder="Search for Movie Name"></span>
+  <button class="searchBtn" (click)="search()" >Search<span style="padding-left: 5px;">
+      <i class="fa fa-search" aria-hidden="true"></i></span></button>
+
+  <div style="float: right;padding-right: 6%;">
+    <button (click)="sortByName()" class="sort"><i class="fa fa-sort" aria-hidden="true"></i><span
+        style="padding-left: 5px;">Sort By Movie Name</span></button>
+
+    <span class="view"><i class="view" *ngIf="showGridView" class="fa fa-list-ul" aria-hidden="true"
+        (click)="listView()"><span style="padding-left: 5px;">Show List View</span></i>
+      <i class="view" *ngIf="showListView" class="fa fa-th" aria-hidden="true" (click)="gridView()"><span
+          style="padding-left: 5px;">Show Grid View</span></i></span>
+  </div>
+</div>
+
+
+<div class="flex" *ngIf="showGridView">
+  <div *ngFor="let dt of data" class="card">
+    <div class="title">{{dt.Title}}</div>
+    <div class="avtar"><img [src]="dt.Poster"></div>
+    <div class="dummy"></div>
+    <div class="info">
+      <div>Year: {{ dt.Year}} </div>
+      <div>ImdbID: {{ dt.imdbID}} </div>
+      <div>Type: {{ dt.Type}} </div>
     </div>
   </div>
+</div>
+
+
+<div *ngIf="showListView">
+  <div *ngFor="let dt of data" class="list">
+    <div class="avathar">
+      <img [src]="dt.Poster" width="60px" height="90px">
+    </div>
+    <div class="listData">
+      <div style="font-weight: bold;">Title: {{ dt.Title}} </div>
+      <div>Year: {{ dt.Year}} </div>
+      <div>ImdbID: {{ dt.imdbID}} </div>
+      <div>Type: {{ dt.Type}} </div>
+    </div>
+
+  </div>
+</div>

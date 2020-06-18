@@ -13,22 +13,26 @@ export class LoginComponent implements OnInit {
     "userName": "",
     "password": ""
   }
-
+  public showError: boolean = false;
 
   constructor(private router: Router) {
-   
+
   }
 
   ngOnInit() {
   }
 
-  
 
-  login() {
+
+  login(): void {
     console.log("hi from login");
-    this.router.navigate(['/home']);
-    localStorage.setItem("login", "true");
-    localStorage.setItem("username", this.reqData.userName);
+
+    if (this.reqData.userName && this.reqData.password) {
+      localStorage.setItem("login", "true");
+      localStorage.setItem("username", this.reqData.userName);
+      this.router.navigate(['/home']);
+
+    }
   }
 
 }
